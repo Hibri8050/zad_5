@@ -1,82 +1,41 @@
-const themeBtn = document.getElementById('theme-btn');
-const themeLink = document.getElementById('theme-link');
-const toggleBtn = document.getElementById('toggle-section-btn');
-const skillsSection = document.querySelector('section:nth-of-type(3)');
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
 
-themeBtn.addEventListener('click', () => {
-    if (themeLink.getAttribute('href') === 'red.css') {
-        themeLink.setAttribute('href', 'green.css');
-    } else {
-        themeLink.setAttribute('href', 'red.css');
-    }
-});
+    let valid = true;
 
-toggleBtn.addEventListener('click', () => {
-    if (skillsSection.style.display === 'none') {
-        skillsSection.style.display = 'block';
-        toggleBtn.textContent = 'Ukryj sekcję Umiejętności';
-    } else {
-        skillsSection.style.display = 'none';
-        toggleBtn.textContent = 'Pokaż sekcję Umiejętności';
-    }
-});
+    let name = document.getElementById("name").value.trim();
+    let surname = document.getElementById("surname").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let message = document.getElementById("message").value.trim();
 
-const form = document.getElementById('form');
+    document.getElementById("nameError").innerText = "";
+    document.getElementById("surnameError").innerText = "";
+    document.getElementById("emailError").innerText = "";
+    document.getElementById("messageError").innerText = "";
 
-form.addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    let isValid = true;
-
-    const name = document.getElementById('name');
-    const surname = document.getElementById('surname');
-    const email = document.getElementById('email');
-    const message = document.getElementById('message');
-
-    const nameError = document.getElementById('nameError');
-    const surnameError = document.getElementById('surnameError');
-    const emailError = document.getElementById('emailError');
-    const messageError = document.getElementById('messageError');
-
-    const hasNumber = /\d/;
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    nameError.textContent = '';
-    surnameError.textContent = '';
-    emailError.textContent = '';
-    messageError.textContent = '';
-
-    if (name.value.trim() === '') {
-        nameError.textContent = 'Podaj imię';
-        isValid = false;
-    } else if (hasNumber.test(name.value)) {
-        nameError.textContent = 'Imię nie może zawierać cyfr';
-        isValid = false;
+    if (name === "" || /\d/.test(name)) {
+        document.getElementById("nameError").innerText = "Niepoprawne imię";
+        valid = false;
     }
 
-    if (surname.value.trim() === '') {
-        surnameError.textContent = 'Podaj nazwisko';
-        isValid = false;
-    } else if (hasNumber.test(surname.value)) {
-        surnameError.textContent = 'Nazwisko nie może zawierać cyfr';
-        isValid = false;
+    if (surname === "" || /\d/.test(surname)) {
+        document.getElementById("surnameError").innerText = "Niepoprawne nazwisko";
+        valid = false;
     }
 
-    if (email.value.trim() === '') {
-        emailError.textContent = 'Podaj e-mail';
-        isValid = false;
-    } else if (!emailPattern.test(email.value)) {
-        emailError.textContent = 'Niepoprawny e-mail';
-        isValid = false;
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+        document.getElementById("emailError").innerText = "Niepoprawny e-mail";
+        valid = false;
     }
 
-    if (message.value.trim() === '') {
-        messageError.textContent = 'Wpisz wiadomość';
-        isValid = false;
+    if (message.length < 5) {
+        document.getElementById("messageError").innerText = "Wiadomość za krótka";
+        valid = false;
     }
 
-    if (isValid) {
-        alert('Formularz wysłany');
-        form.reset();
+    if (valid) {
+        alert("Formularz poprawny!");
+        document.getElementById("contactForm").reset();
     }
 });
