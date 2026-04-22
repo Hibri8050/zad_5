@@ -23,3 +23,16 @@ img {
     height: auto;
     border-radius: 10px;
 }
+
+body {
+    font-family: Arial;
+    background-color: lightgreen;
+}
+
+.red {
+    background-color: lightcoral;
+}
+
+.green {
+    background-color: lightgreen;
+}
