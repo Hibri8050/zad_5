@@ -1,49 +1,47 @@
-
 body {
     font-family: Arial, sans-serif;
-    text-align: center;
-    transition: all 0.3s ease;
+    background: #f4f4f4;
+    padding: 30px;
 }
 
-header {
+h1 {
+    text-align: center;
+}
+
+form {
+    max-width: 500px;
+    margin: auto;
+    background: white;
     padding: 20px;
-    color: white;
+    border-radius: 10px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
 }
 
 button {
+    margin-top: 15px;
+    width: 100%;
     padding: 10px;
-    margin: 5px;
+    background: green;
+    color: white;
+    border: none;
     cursor: pointer;
 }
 
-section {
-    margin: 20px;
-    padding: 20px;
-    background: white;
-    transition: all 0.3s ease;
+button:hover {
+    background: darkgreen;
 }
 
-
-body.theme-red {
-    background-color: #ffe5e5;
-}
-
-body.theme-red header {
-    background-color: #c62828;
-}
-
-
-body.theme-green {
-    background-color: #e8f5e9;
-}
-
-body.theme-green header {
-    background-color: #2e7d32;
-}
-
-
-.hidden {
-    opacity: 0;
-    transform: scale(0.95);
-    pointer-events: none;
+.error {
+    color: red;
+    font-size: 12px;
 }
