@@ -1,47 +1,55 @@
+
 body {
-    font-family: Arial, sans-serif;
-    background: #f4f4f4;
-    padding: 30px;
-}
-
-h1 {
-    text-align: center;
-}
-
-form {
-    max-width: 500px;
-    margin: auto;
-    background: white;
+    transition: all 0.3s ease;
+    margin: 0;
     padding: 20px;
+}
+
+.green-theme {
+    background-color: #d4edda !important;
+    color: #155724 !important;
+    font-family: Arial, sans-serif !important; /* Шрифт Arial */
+    text-align: left !important;              /* Текст слева */
+}
+
+.red-theme {
+    background-color: #f8d7da !important;
+    color: #721c24 !important;
+    font-family: "Times New Roman", Times, serif !important; /* Шрифт Times New Roman */
+    text-align: right !important;                            /* Текст справа */
+}
+
+#controls {
+    text-align: left !important; /* Кнопки всегда слева для удобства */
+    margin-bottom: 20px;
+}
+
+.hidden {
+    display: none !important;
+}
+img {
+    width: 150px;
+    height: auto;
     border-radius: 10px;
 }
-
-label {
+#contactForm input, #contactForm textarea {
     display: block;
-    margin-top: 10px;
-}
-
-input, textarea {
+    margin: 10px 0;
     width: 100%;
+    max-width: 300px;
     padding: 8px;
-    margin-top: 5px;
+    box-sizing: border-box;
 }
 
-button {
-    margin-top: 15px;
-    width: 100%;
-    padding: 10px;
-    background: green;
-    color: white;
-    border: none;
-    cursor: pointer;
+#contactForm textarea {
+    height: 100px;
+    resize: vertical;
 }
 
-button:hover {
-    background: darkgreen;
+.error-text {
+    color: #d9534f;
 }
 
-.error {
-    color: red;
-    font-size: 12px;
+.success-text {
+    color: #5cb85c;
 }
