@@ -2,19 +2,25 @@ body {
     transition: all 0.3s ease;
     margin: 0;
     padding: 20px;
+    font-family: sans-serif;
 }
 
-header img {
-    width: 200px; 
-    height: 200px;
-    object-fit: cover; 
-    display: block;
+#profile-img {
+    width: 200px !important;
+    height: 200px !important;
+    object-fit: cover !important;
+    border-radius: 10px;
+}
+
+#controls {
+    margin-bottom: 20px;
+    text-align: left !important;
 }
 
 .green-theme {
     background-color: #d4edda !important;
     color: #155724 !important;
-    font-family: Arial, sans-serif !important;
+    font-family: Arial, Helvetica, sans-serif !important;
     text-align: left !important;
 }
 
@@ -23,11 +29,6 @@ header img {
     color: #721c24 !important;
     font-family: "Times New Roman", Times, serif !important;
     text-align: right !important;
-}
-
-#controls {
-    text-align: left !important;
-    margin-bottom: 20px;
 }
 
 .hidden {
@@ -39,16 +40,11 @@ header img {
     margin: 10px 0;
     width: 100%;
     max-width: 300px;
-    padding: 8px;
+    padding: 10px;
 }
 
-.error-text {
-    color: #d9534f;
-    font-weight: bold;
-}
-
-.success-text {
-    color: #5cb85c;
+#validationMessage {
+    margin-top: 10px;
     font-weight: bold;
 }
 img {
