@@ -1,73 +1,43 @@
-document.getElementById("contactForm").addEventListener("submit", function(e) {
-    e.preventDefault();
+const themeBtn = document.getElementById('themeButton');
+const toggleBtn = document.getElementById('toggleBtn');
 
-    let valid = true;
+const sections = document.querySelectorAll('section');
+const targetSection = sections[sections.length - 1]; 
 
-    let name = document.getElementById("name").value.trim();
-    let surname = document.getElementById("surname").value.trim();
-    let email = document.getElementById("email").value.trim();
-    let message = document.getElementById("message").value.trim();
-
-    document.getElementById("nameError").innerText = "";
-    document.getElementById("surnameError").innerText = "";
-    document.getElementById("emailError").innerText = "";
-    document.getElementById("messageError").innerText = "";
-
-    if (name === "" || /\d/.test(name)) {
-        document.getElementById("nameError").innerText = "Niepoprawne imię";
-        valid = false;
+themeBtn.addEventListener('click', () => {
+    if (!document.body.classList.contains('green-theme') && !document.body.classList.contains('red-theme')) {
+        document.body.classList.add('green-theme');
+    } else if (document.body.classList.contains('green-theme')) {
+        document.body.classList.remove('green-theme');
+        document.body.classList.add('red-theme');
+    } else {
+        document.body.classList.remove('red-theme');
     }
-
-    if (surname === "" || /\d/.test(surname)) {
-        document.getElementById("surnameError").innerText = "Niepoprawne nazwisko";
-        valid = false;
-    }
-
-    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email)) {
-        document.getElementById("emailError").innerText = "Niepoprawny e-mail";
-        valid = false;
-    }
-
-    if (message.length < 5) {
-        document.getElementById("messageError").innerText = "Wiadomość za krótka";
-        valid = false;
-    }
-
-    if (valid) {
-        alert("Formularz poprawny!");
-        document.getElementById("contactForm").reset();
-    }
+    console.log("Motyw zmieniony: " + document.body.className);
 });
-const contactForm = document.getElementById('contactForm');
-const validationMessage = document.getElementById('validationMessage');
 
-contactForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    validationMessage.innerText = "";
-    validationMessage.className = "";
-
-    const name = document.getElementById('userName').value;
-    const surname = document.getElementById('userSurname').value;
-    const email = document.getElementById('userEmail').value;
-
-    const hasDigits = /\d/;
-
-    if (hasDigits.test(name) || hasDigits.test(surname)) {
-        validationMessage.innerText = "Błąd: Imię i nazwisko nie mogą zawierać cyfr!";
-        validationMessage.classList.add('error-text');
-        return;
-    }
-
-    if (!email.includes('@') || !email.includes('.')) {
-        validationMessage.innerText = "Błąd: Wprowadź poprawny adres e-mail!";
-        validationMessage.classList.add('error-text');
-        return;
-    }
-
-    validationMessage.innerText = "Formularz został wysłany pomyślnie!";
-    validationMessage.classList.add('success-text');
-    
-    contactForm.reset();
+toggleBtn.addEventListener('click', () => {
+    targetSection.classList.toggle('hidden');
+    console.log("Widoczność sekcji zmieniona");
 });
+#contactForm input, #contactForm textarea {
+    display: block;
+    margin: 10px 0;
+    width: 100%;
+    max-width: 300px;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+#contactForm textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.error-text {
+    color: #d9534f;
+}
+
+.success-text {
+    color: #5cb85c;
+}
