@@ -1,9 +1,9 @@
+
 const themeBtn = document.getElementById('themeButton');
 const toggleBtn = document.getElementById('toggleBtn');
-const contactForm = document.getElementById('contactForm');
-const validationMessage = document.getElementById('validationMessage');
+const projectsSection = document.getElementById('projects-section');
 
-themeBtn.addEventListener('click', function() {
+themeBtn.addEventListener('click', () => {
     if (!document.body.classList.contains('green-theme') && !document.body.classList.contains('red-theme')) {
         document.body.classList.add('green-theme');
     } else if (document.body.classList.contains('green-theme')) {
@@ -14,35 +14,34 @@ themeBtn.addEventListener('click', function() {
     }
 });
 
-toggleBtn.addEventListener('click', function() {
-    const sections = document.querySelectorAll('section');
-    const targetSection = sections[sections.length - 2]; 
-    targetSection.classList.toggle('hidden');
+toggleBtn.addEventListener('click', () => {
+    projectsSection.classList.toggle('hidden');
 });
 
-contactForm.addEventListener('submit', function(e) {
+const contactForm = document.getElementById('contactForm');
+const validationMessage = document.getElementById('validationMessage');
+
+contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
     
-    validationMessage.innerText = "";
     const name = document.getElementById('userName').value;
     const surname = document.getElementById('userSurname').value;
     const email = document.getElementById('userEmail').value;
-
     const hasDigits = /\d/;
 
     if (hasDigits.test(name) || hasDigits.test(surname)) {
         validationMessage.innerText = "Błąd: Imię i nazwisko nie mogą zawierać cyfr!";
-        validationMessage.className = "error-text";
+        validationMessage.style.color = "red";
         return;
     }
 
-    if (!email.includes('@') || !email.includes('.')) {
+    if (!email.includes('@')) {
         validationMessage.innerText = "Błąd: Wprowadź poprawny adres e-mail!";
-        validationMessage.className = "error-text";
+        validationMessage.style.color = "red";
         return;
     }
 
     validationMessage.innerText = "Formularz został wysłany pomyślnie!";
-    validationMessage.className = "success-text";
+    validationMessage.style.color = "green";
     contactForm.reset();
 });
