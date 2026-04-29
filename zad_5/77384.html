@@ -3,19 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>CV</title>
-
-    <!-- ТЕМА -->
-    <link id="theme-link" rel="stylesheet" href="red.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
+<div id="controls" style="padding: 15px; background: #eee; border-bottom: 1px solid #ccc; position: sticky; top: 0; z-index: 100;">
+    <button id="themeButton">Zmień styl </button>
+    <button id="toggleBtn">Pokaż/Ukryj Sekcję</button>
+</div>
 <header>
     <h1>Dmytro Datsenko</h1>
-
-    <button id="theme-btn">Zmień kolor</button>
-    <button id="toggle-section-btn">Ukryj sekcję Umiejętności</button>
+    <img src="foto.jpg" alt="Moje zdjęcie">
 </header>
-
 
 <main>
 
@@ -33,7 +31,10 @@
     <p>Miasto: Warszawa</p>
 
     <p>
-        <a href="https://github.com/Hibri8050" target="_blank">GitHub</a>
+        <a href="https://github.com/Hibri8050" target="_blank" rel="noopener noreferrer">
+            GitHub
+        </a>
+
     </p>
 </section>
 
@@ -68,6 +69,7 @@
         <h3>Projekt uczelniany</h3>
         <p>Tworzenie prostych projektów w ramach zajęć na uczelni.</p>
     </article>
+
 </section>
 
 <section>
@@ -84,39 +86,19 @@
         <li>Automat vendingowy (projekt)</li>
     </ul>
 </section>
-
-
-<section>
-    <h2>Formularz kontaktowy</h2>
-
-    <form id="form">
-        <label>Imię:</label>
-        <input type="text" id="name">
-        <span class="error" id="nameError"></span>
-
-        <label>Nazwisko:</label>
-        <input type="text" id="surname">
-        <span class="error" id="surnameError"></span>
-
-        <label>E-mail:</label>
-        <input type="text" id="email">
-        <span class="error" id="emailError"></span>
-
-        <label>Wiadomość:</label>
-        <textarea id="message"></textarea>
-        <span class="error" id="messageError"></span>
-
+<form id="contactForm">
+        <input type="text" id="userName" placeholder="Imię" required>
+        <input type="text" id="userSurname" placeholder="Nazwisko" required>
+        <input type="email" id="userEmail" placeholder="Email" required>
+        <textarea id="userMessage" placeholder="Wiadomość" required></textarea>
         <button type="submit">Wyślij</button>
     </form>
-</section>
-
+    <div id="validationMessage" style="margin-top: 10px; font-weight: bold;"></div>
 </main>
 
 <footer>
     <p>© 2026</p>
 </footer>
-
 <script src="script.js"></script>
-
 </body>
 </html>
